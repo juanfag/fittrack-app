@@ -1,5 +1,5 @@
 import{createClient}from'https://esm.sh/@supabase/supabase-js@2.57.0';
-const db=createClient('https://gzmuiovgvczzbovlrvto.supabase.co','sb_publishable_wQX763UKqmqCqvD70UmxQQ_k1o9KNol');
+const db=createClient('https://gzmuiovgvczzbovlrvto.supabase.co','sb_publishable_wQX763UKqmqCqvD70UmxQQ_k1o9KNol',{auth:{storageKey:'fittrack-auth-v2',autoRefreshToken:true,persistSession:true,detectSessionInUrl:true}});
 window.fittrackDb=db;
 const $=id=>document.getElementById(id),v=id=>$(id).value.trim(),s={user:null,plans:[],plan:null,day:1,dayId:null};
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
