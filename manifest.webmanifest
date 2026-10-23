@@ -1,1 +1,22 @@
-{"name":"FitTrack","short_name":"FitTrack","start_url":"./","display":"standalone","theme_color":"#10151e","background_color":"#10151e"}
+{
+  "id": "./",
+  "name": "FitTrack · Coach Live",
+  "short_name": "FitTrack",
+  "description": "Entrenamientos, planes y progreso con Coach Live",
+  "start_url": "./?app=1",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": [
+    "standalone"
+  ],
+  "theme_color": "#10151e",
+  "background_color": "#10151e",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
