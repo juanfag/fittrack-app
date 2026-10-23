@@ -50,6 +50,8 @@ function syncFullscreen(){
  document.getElementById('fsPause').hidden=el('coachPause')?.hidden??true;
  document.getElementById('fsPause').textContent=get('coachPause')||'Pausar';
  document.getElementById('fsSkip').hidden=el('coachSkip')?.hidden??true;
- document.getElementById('fsDone').hidden=ended||phase==='rest';document.getElementById('fsSave').hidden=!ended;document.getElementById('fsExercise').hidden=ended;document.getElementById('fsReps').hidden=ended;document.getElementById('fsStatus').textContent=ended?'Revisá tus repeticiones y guardá la sesión.':get('coachStatus');
+ document.getElementById('fsDone').hidden=ended||phase==='rest';document.getElementById('fsSave').hidden=true;document.getElementById('fsExercise').hidden=ended;document.getElementById('fsReps').hidden=ended;document.getElementById('fsStatus').textContent=get('coachStatus');
 }
 function openFullscreen(){fullscreen();const layer=document.getElementById('coachFullscreen');layer.hidden=false;document.body.classList.add('coach-active');syncFullscreen()}
+
+window.addEventListener('fittrack:guided-saved',()=>{const s=el('fsStatus');if(s)s.textContent='Entrenamiento guardado correctamente ✓';const p=el('coachStatus');if(p)p.textContent='Entrenamiento guardado correctamente ✓'});
