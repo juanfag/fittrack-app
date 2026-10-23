@@ -5,7 +5,7 @@ const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 function check(r){if(r.error)throw r.error;return r.data}
 function notify(msg,bad=false){$('msg').innerHTML='<div class="notice" style="'+(bad?'background:#67363e':'')+'">'+esc(msg)+'</div>';setTimeout(()=>$('msg').replaceChildren(),6500)}
 async function safe(f){try{await f()}catch(e){console.error(e);notify(e.message||'Error inesperado',true)}}
-function page(p){if(p==='plans')showPlansOverview();['home','plans','train','body','profile'].forEach(x=>$(x).classList.toggle('hidden',x!==p));if(p==='train')safe(loadSessions);if(p==='body')safe(loadBody)}
+function page(p){if(p==='plans')showPlansOverview();['home','plans','train','body','profile'].forEach(x=>$(x).classList.toggle('hidden',x!==p));document.querySelectorAll('#nav [data-page]').forEach(b=>{const active=b.dataset.page===p;b.classList.toggle('active',active);if(active)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});if(p==='train')safe(loadSessions);if(p==='body')safe(loadBody)}
 document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>page(b.dataset.page));
 async function auth(){const{data:{user}}=await db.auth.getUser();s.user=user;$('auth').classList.toggle('hidden',!!user);$('app').classList.toggle('hidden',!user);$('nav').classList.toggle('hidden',!user);$('logout').classList.toggle('hidden',!user);if(user){$('userEmail').textContent=user.email;await loadPlans();await loadSessions()}}
 $('login').onclick=()=>safe(async()=>{check(await db.auth.signInWithPassword({email:v('email'),password:v('password')}));await auth()});
