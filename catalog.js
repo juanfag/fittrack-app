@@ -1,5 +1,5 @@
 import{createClient}from'https://esm.sh/@supabase/supabase-js@2.57.0';
-const db=createClient('https://gzmuiovgvczzbovlrvto.supabase.co','sb_publishable_wQX763UKqmqCqvD70UmxQQ_k1o9KNol');
+const db=window.fittrackDb||createClient('https://gzmuiovgvczzbovlrvto.supabase.co','sb_publishable_wQX763UKqmqCqvD70UmxQQ_k1o9KNol');
 const $=id=>document.getElementById(id),E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const catalog=[
 ['Sentadilla goblet','Mancuernas','Piernas','Sostené una mancuerna frente al pecho, bajá con control y empujá el suelo al subir.'],
