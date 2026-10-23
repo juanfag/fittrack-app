@@ -53,8 +53,10 @@ function syncFullscreen(){
  document.getElementById('fsSkip').hidden=el('coachSkip')?.hidden??true;
  document.getElementById('fsDone').hidden=ended||phase==='rest';document.getElementById('fsSave').hidden=true;document.getElementById('fsExercise').hidden=ended;document.getElementById('fsReps').hidden=ended;document.getElementById('fsStatus').textContent=get('coachStatus');
 }
-function armGuidedBack(){history.pushState({fittrackCoach:'guided'},'',location.pathname+location.search)}
+function armGuidedBack(){}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&clock&&!paused&&['work','rest'].includes(phase))updateClock()});
 function openFullscreen(){armGuidedBack();document.querySelectorAll('button').forEach(b=>{if(b.textContent==='▶ Retomar rutina')b.hidden=true});fullscreen();const layer=document.getElementById('coachFullscreen');layer.hidden=false;document.body.classList.add('coach-active');syncFullscreen()}
 
 window.addEventListener('fittrack:guided-saved',()=>{const s=el('fsStatus');if(s)s.textContent='Entrenamiento guardado correctamente ✓';const p=el('coachStatus');if(p)p.textContent='Entrenamiento guardado correctamente ✓'});
+
+window.addEventListener('fittrackCancelGuidedCoach',()=>{stop();phase='idle';current=0;done=new Set();startedAt=0;const layer=document.getElementById('coachFullscreen');if(layer)layer.hidden=true;document.body.classList.remove('coach-active');document.querySelectorAll('button').forEach(b=>{if(b.textContent==='▶ Retomar rutina')b.hidden=true});const card=document.getElementById('coachCard');if(card){card.remove();attach()}document.getElementById('guidedWorkout')?.scrollIntoView({behavior:'smooth',block:'start'})});
