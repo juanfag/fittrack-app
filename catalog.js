@@ -63,4 +63,5 @@ function close(){stop();layer.hidden=true;document.body.style.overflow='';starte
 q('freeCoachExit').onclick=close;
 q('freeCoachSave').onclick=()=>{close();q('saveWorkout').click()};
 window.addEventListener('pagehide',stop);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});
 })();
