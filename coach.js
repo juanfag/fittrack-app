@@ -4,9 +4,8 @@ let current=0,remaining=0,clock=null,deadline=0,paused=false,voice=true,done=new
 const speech=window.speechSynthesis;
 // Keep exercise instructions audible: countdown must not interrupt longer coaching cues.
 let lastCountdownKey='',startedAt=0;
-function announceCountdown(){if(paused||!['work','rest'].includes(phase)||remaining<1||remaining>5)return;const key=phase+':'+current+':'+remaining;if(key===lastCountdownKey)return;lastCountdownKey=key;queueCountdown(String(remaining));}
+function announceCountdown(){if(paused||!['work','rest'].includes(phase)||remaining!==5)return;const key=phase+':'+current;if(key===lastCountdownKey)return;lastCountdownKey=key;if(!voice||!speech||!window.SpeechSynthesisUtterance)return;try{speech.cancel();const u=new SpeechSynthesisUtterance('Cinco. Cuatro. Tres. Dos. Uno.');u.lang='es-CO';u.rate=1.18;speech.speak(u)}catch{}}
 function say(t){if(!voice||!speech||!window.SpeechSynthesisUtterance)return;try{speech.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='es-CO';u.rate=.92;speech.speak(u)}catch{}}
-function queueCountdown(t){if(!voice||!speech||!window.SpeechSynthesisUtterance)return;try{const u=new SpeechSynthesisUtterance(t);u.lang='es-CO';u.rate=1.12;speech.speak(u)}catch{}}
 function stop(){lastCountdownKey='';if(clock)clearInterval(clock);clock=null;paused=false;try{speech?.cancel()}catch{}}
 function inputs(){return [...root.querySelectorAll('input[data-set]')]}
 function el(id){return document.getElementById(id)}
