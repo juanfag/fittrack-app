@@ -128,6 +128,25 @@ document.getElementById('addFreeExercise').onclick=()=>{const x=freeDraft();if(!
 const q=id=>document.getElementById(id);let repTimer=null,repNumber=0,repGoal=0;let timer=null,deadline=0,left=0,phase='work',index=0,total=0,work=0,rest=0,paused=false,started=false,lastSpokenSecond=-1,startedAt=0,saving=false,steps=[],exerciseNumber=0;
 const layer=document.createElement('section');layer.id='freeCoachOverlay';layer.hidden=true;layer.style.cssText='position:fixed;inset:0;z-index:9999;background:#10151d;color:white;padding:20px 22px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;overflow:auto';
 layer.innerHTML='<div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><strong style="font-size:22px">Fit<span style="color:#b7f56b">Track</span> · Coach Live</strong><button id="freeCoachExit" class="secondary">Salir de vista</button></div><div style="text-align:center"><p id="freeCoachPhase" style="font-size:24px;color:#b7f56b"></p><h2 id="freeCoachName" style="font-size:32px"></h2><p id="freeCoachProgress" style="font-size:24px"></p><div class="progress-track"><div id="freeCoachFill" class="progress-fill" style="width:0%"></div></div><div id="freeCoachTimer" style="font-size:clamp(44px,12vw,80px);font-weight:800;margin:12px 0"></div><p id="freeCoachHint" style="font-size:22px"></p><p id="freeCoachRestGuide" style="font-size:15px;color:#b7f56b"></p><div id="freeCoachVideo" style="display:flex;justify-content:center"></div><button type="button" id="freeCoachCount" class="secondary">▶ Iniciar conteo de repeticiones</button><p id="freeCoachCountStatus" style="font-size:18px;color:#b7f56b"></p><button type="button" id="freeCoachTechnique" class="secondary">Ver técnica del ejercicio</button><button type="button" id="freeCoachSwap" class="secondary">Cambiar ejercicio pendiente</button></div><div style="display:grid;gap:12px"><button id="freeCoachDone">Serie completada</button><button id="freeCoachPause" class="secondary">Pausar</button><button id="freeCoachSkip" class="secondary">Omitir descanso</button><button id="freeCoachSave" hidden>Guardar entrenamiento</button></div>';
+const compactCoachStyle=document.createElement('style');compactCoachStyle.textContent=`
+#freeCoachOverlay{height:100dvh;max-height:100dvh;overflow:hidden!important;padding:calc(env(safe-area-inset-top,0px) + 8px) 12px calc(env(safe-area-inset-bottom,0px) + 8px)!important;gap:7px;justify-content:flex-start!important}
+#freeCoachOverlay>div:first-child{flex:0 0 auto;gap:8px!important}
+#freeCoachOverlay>div:first-child strong{font-size:17px!important}
+#freeCoachOverlay>div:first-child button{padding:8px;font-size:13px}
+#freeCoachOverlay>div:nth-child(2){flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:2px 0 10px}
+#freeCoachOverlay>div:nth-child(3){flex:0 0 auto;display:flex!important;flex-direction:row;gap:7px!important;padding:8px 0 2px;background:#101b25}
+#freeCoachOverlay>div:nth-child(3) button:not([hidden]){flex:1;min-width:0;min-height:48px;font-size:14px;padding:8px 5px}
+#freeCoachOverlay #freeCoachName{font-size:clamp(19px,5vw,25px)!important;line-height:1.18;margin:5px 0}
+#freeCoachOverlay #freeCoachPhase{font-size:15px!important;margin:5px 0}
+#freeCoachOverlay #freeCoachProgress{font-size:14px!important;margin:5px 0}
+#freeCoachOverlay #freeCoachTimer{font-size:clamp(38px,10vw,62px)!important;line-height:1.08;margin:7px 0!important}
+#freeCoachOverlay #freeCoachHint{font-size:15px!important;line-height:1.3;margin:6px 0}
+#freeCoachOverlay #freeCoachRestGuide,#freeCoachOverlay #freeCoachCountStatus{font-size:13px!important;margin:5px 0}
+#freeCoachOverlay #freeCoachVideo video{max-height:min(25dvh,190px)!important;max-width:100%;object-fit:contain}
+#freeCoachOverlay #freeCoachCount,#freeCoachOverlay #freeCoachTechnique,#freeCoachOverlay #freeCoachSwap{min-height:38px;padding:8px 10px;margin:3px}
+#freeCoachOverlay [hidden]{display:none!important}
+@media(max-height:700px){#freeCoachOverlay #freeCoachVideo video{max-height:19dvh!important}}
+`;document.head.append(compactCoachStyle);
 document.body.append(layer);layer.hidden=true;document.getElementById('freeCoachTechnique').onclick=()=>window.fittrackShowExerciseGuide?.(steps[index]?.name);const endActions=document.createElement('div');endActions.id='freeCoachEndActions';endActions.hidden=true;endActions.style.cssText='gap:12px;margin-top:14px';endActions.innerHTML='<button type="button" id="freeCoachHistory">Ver historial</button><button type="button" id="freeCoachAgain" class="secondary">Volver a entrenar</button>';layer.append(endActions);
 function say(s){try{if(!window.speechSynthesis)return;window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(s);u.lang='es-CO';u.rate=.92;window.speechSynthesis.speak(u)}catch{}}
 function stopRepCount(){if(repTimer)clearInterval(repTimer);repTimer=null}function stop(){stopRepCount();if(timer)clearInterval(timer);timer=null;try{window.speechSynthesis?.cancel()}catch{}}
