@@ -73,6 +73,18 @@ function fullscreen(){
 #coachFullscreen .ct{font-size:clamp(36px,10vw,62px)!important;line-height:1.05}
 #coachFullscreen .phase{font-size:14px;letter-spacing:2px}
 #coachFullscreen #fsTechnique,#coachFullscreen #fsStartReps{min-height:38px!important;padding:7px 12px}
+#coachFullscreen>div:nth-child(2){overflow:hidden!important;gap:2px!important;padding:0!important}
+#coachFullscreen #fsElapsed,#coachFullscreen #fsProgressDetail,#coachFullscreen #fsRemaining,#coachFullscreen #fsStatus,#coachFullscreen #fsRestRecommendation{display:none!important}
+#coachFullscreen #fsProgress{font-size:13px!important;line-height:1.1}
+#coachFullscreen #fsExercise{font-size:clamp(17px,4.3vw,22px)!important;line-height:1.12}
+#coachFullscreen #fsAvatar video{max-height:min(21dvh,150px)!important}
+#coachFullscreen #fsAvatar img{max-height:min(21dvh,150px)!important}
+#coachFullscreen .ct{font-size:clamp(35px,9vw,54px)!important}
+#coachFullscreen .phase{font-size:13px}
+#coachFullscreen #fsReps{font-size:12px!important}
+#coachFullscreen #fsTechnique{font-size:12px;min-height:32px!important}
+#coachFullscreen #fsReturn{min-height:34px!important;font-size:12px}
+#coachFullscreen .controls button{min-height:44px}
 #coachFullscreen [hidden]{display:none!important}
 @media(max-height:700px){#coachFullscreen #fsAvatar video,#coachFullscreen #fsAvatar model-viewer{max-height:19dvh!important}#coachFullscreen #fsRemaining,#coachFullscreen #fsRestRecommendation{font-size:12px!important}}
 `;document.head.append(style);
