@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "pilot": "shoulder-circles",
+  "status": "awaiting_3d_asset",
+  "stable_app_version": "0.5.79",
+  "exercise_variants": [
+    {
+      "id": "shoulder-circles-forward",
+      "display_name": "Círculos de hombros hacia adelante",
+      "phase": "warmup",
+      "duration_seconds": 30,
+      "motion_requirements": [
+        "Standing neutral posture; stable feet and torso",
+        "Shoulder girdle travels up, forward, down and back in continuous circles",
+        "Elbows relaxed; avoid turning motion into arm lateral raises",
+        "Continuous seamless loop"
+      ],
+      "muscle_overlay": ["deltoid", "trapezius", "scapular_stabilizers"],
+      "media": null,
+      "technical_review": {"status": "pending", "reviewer": null, "notes": null},
+      "license_review": {"status": "pending", "source": null, "license": null}
+    },
+    {
+      "id": "shoulder-circles-backward",
+      "display_name": "Círculos de hombros hacia atrás",
+      "phase": "warmup",
+      "duration_seconds": 30,
+      "motion_requirements": [
+        "Standing neutral posture; stable feet and torso",
+        "Shoulder girdle travels up, back, down and forward in continuous circles",
+        "Elbows relaxed; no dumbbells",
+        "Continuous seamless loop"
+      ],
+      "muscle_overlay": ["deltoid", "trapezius", "scapular_stabilizers"],
+      "media": null,
+      "technical_review": {"status": "pending", "reviewer": null, "notes": null},
+      "license_review": {"status": "pending", "source": null, "license": null}
+    }
+  ],
+  "release_gates": ["accurate_anatomy", "front_and_side_review", "correct_motion_direction", "license_verified", "android_performance", "user_approval"]
+}
