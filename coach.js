@@ -103,7 +103,7 @@ function fullscreen(){
 #coachFullscreen #fsElapsed,#coachFullscreen #fsProgressDetail,#coachFullscreen #fsRestRecommendation,#coachFullscreen #fsStatus,#coachFullscreen #fsRemaining{display:none!important}
 #coachFullscreen .controls{padding:3px 0!important;gap:6px;background:transparent}
 #coachFullscreen .controls button{min-height:45px;font-size:13px}
-#coachFullscreen #fsReturn{min-height:30px!important;font-size:11px;padding:4px}
+#coachFullscreen #fsReturn{min-height:48px!important;font-size:14px!important;font-weight:600;padding:10px 12px!important;margin-top:4px!important;flex-shrink:0;width:100%}
 #coachFullscreen [hidden]{display:none!important}
 @media(max-height:700px){#coachFullscreen #fsAvatar video,#coachFullscreen #fsAvatar model-viewer{max-height:19dvh!important}#coachFullscreen #fsRemaining,#coachFullscreen #fsRestRecommendation{font-size:12px!important}}
 `;document.head.append(style);
