@@ -155,6 +155,18 @@ const compactCoachStyle=document.createElement('style');compactCoachStyle.textCo
 #freeCoachOverlay #freeCoachTechnique,#freeCoachOverlay #freeCoachSwap{font-size:12px;padding:6px;min-height:32px}
 #freeCoachOverlay #freeCoachCount{font-size:12px;padding:7px;min-height:34px}
 #freeCoachOverlay>div:nth-child(3) button:not([hidden]){min-height:44px}
+#freeCoachOverlay>div:nth-child(2){display:flex;flex-direction:column;align-items:center;gap:2px;overflow:hidden!important}
+#freeCoachOverlay #freeCoachPhase{order:0;margin:0!important}
+#freeCoachOverlay #freeCoachName{order:1;margin:0!important}
+#freeCoachOverlay #freeCoachProgress{order:2;margin:0!important}
+#freeCoachOverlay .progress-track{order:3;width:100%;height:6px}
+#freeCoachOverlay #freeCoachTimer{order:4;margin:0!important}
+#freeCoachOverlay #freeCoachVideo{order:5;flex:1 1 auto;min-height:0;width:100%;align-items:center;overflow:hidden}
+#freeCoachOverlay #freeCoachVideo video{height:100%!important;max-height:100%!important;width:auto!important;object-fit:contain}
+#freeCoachOverlay #freeCoachHint{order:6}
+#freeCoachOverlay #freeCoachCount{order:7}
+#freeCoachOverlay #freeCoachTechnique{order:8}
+#freeCoachOverlay #freeCoachSwap{order:9}
 #freeCoachOverlay [hidden]{display:none!important}
 @media(max-height:700px){#freeCoachOverlay #freeCoachVideo video{max-height:19dvh!important}}
 `;document.head.append(compactCoachStyle);
