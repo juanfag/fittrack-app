@@ -30,8 +30,8 @@ const catalog=[
 ['Dead bug','Peso corporal','Core','Boca arriba, alterná brazo y pierna opuestos manteniendo el abdomen activo.'],
 ['Elevación de talones','Peso corporal','Piernas','Subí sobre la punta de los pies y descendé lentamente.'],
 ['Step-up','Peso corporal','Piernas','Subí a un escalón estable y bajá con control.'],
-['Calentamiento completo (5 min)','Calentamiento','Preparación','Circuito guiado de 5 minutos: marcha, hombros, cadera y sentadillas sin peso.'],
-['Vuelta a la calma completa (5 min)','Vuelta a la calma','Recuperación','Secuencia suave de 5 minutos: caminata, estiramientos y respiración.']
+['Calentamiento completo (5 min)','Calentamiento','Preparación','Circuito dinámico de 5 minutos con 10 movimientos de 30 segundos, adaptado al tren superior, inferior o cuerpo completo.'],
+['Vuelta a la calma completa (5 min)','Vuelta a la calma','Recuperación','Secuencia suave de 5 minutos con 10 movimientos de 30 segundos, adaptada al entrenamiento.']
 ];
 const days=['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];let planned=[],selected=[];
 const fittrackYouTubeVideos={"Sentadilla goblet":"2R2_PAGx3AU","Peso muerto rumano":"cWwfa0oniqI","Press de pecho en suelo":"jSKqdRTfICo","Press de hombros":"6YG2ETOwDR8","Remo inclinado":"QEamGpgkTSo","Extensión de tríceps":"SfAxwNHfMyY","Curl de bíceps":"oLyP6sORFOc","Zancadas":"M9J8vq3pQ0s","Elevaciones laterales":"lvUvnvXgh-Y","Press de pecho con banda":"T0kZ8stkV94","Remo con banda":"5fas_DRGqF0","Face pull con banda":"6-dladd8sTM","Curl de bíceps con banda":"p7tWqclgxmw","Sentadilla con banda":"jlX6jToi-aM","Caminata lateral con banda":"N28Hpdezg7Q","Remo en TRX":"QsPtwhZmVIs","Sentadilla en TRX":"_Icuiwd7pt4","Press de pecho en TRX":"6ryeTHTmmzQ","Curl de bíceps en TRX":"e_3D0Ll0cBw","Plancha en TRX":"vXQxfhDPxc4","Flexiones":"cWrJFIdTje0","Sentadilla libre":"cqoNTr02fRk","Puente de glúteos":"Cxp6D7LEqjM","Plancha frontal":"VDfAZvFMHiI","Bird dog":"Tjo5oYHoS8M","Dead bug":"vn72PVWnu14","Elevación de talones":"gHaFlVoMnhY","Step-up":"mw6iqu9K8DY"};
