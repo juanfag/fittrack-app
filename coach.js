@@ -85,6 +85,25 @@ function fullscreen(){
 #coachFullscreen #fsTechnique{font-size:12px;min-height:32px!important}
 #coachFullscreen #fsReturn{min-height:34px!important;font-size:12px}
 #coachFullscreen .controls button{min-height:44px}
+#coachFullscreen{padding:8px 10px!important;gap:3px!important}
+#coachFullscreen>div:first-child{height:38px;min-height:38px}
+#coachFullscreen>div:first-child b{font-size:14px}
+#coachFullscreen #coachCloseScreen{min-height:34px!important;padding:4px 9px;font-size:12px}
+#coachFullscreen>div:nth-child(2){display:flex!important;flex-direction:column;justify-content:flex-start!important;gap:3px!important;overflow:hidden!important;min-height:0}
+#coachFullscreen #fsPhase{order:0;font-size:12px!important;line-height:1.1}
+#coachFullscreen #fsExercise{order:1;font-size:clamp(17px,4vw,21px)!important;line-height:1.12}
+#coachFullscreen #fsProgress{order:2;font-size:12px!important;line-height:1.1}
+#coachFullscreen .progress-track{order:3;height:6px;margin:2px 5px!important}
+#coachFullscreen #fsTimer{order:4;font-size:clamp(37px,11vw,59px)!important;line-height:1.08}
+#coachFullscreen #fsAvatar{order:5;min-height:0;flex:1 1 auto;align-items:center;overflow:hidden}
+#coachFullscreen #fsAvatar video,#coachFullscreen #fsAvatar img,#coachFullscreen #fsAvatar model-viewer{height:100%!important;max-height:100%!important;width:auto!important;max-width:100%;object-fit:contain}
+#coachFullscreen #fsStartReps{order:6;min-height:34px!important;font-size:12px;padding:5px 9px}
+#coachFullscreen #fsReps{order:7;font-size:12px!important}
+#coachFullscreen #fsTechnique{order:8;min-height:32px!important;font-size:12px;padding:5px 9px}
+#coachFullscreen #fsElapsed,#coachFullscreen #fsProgressDetail,#coachFullscreen #fsRestRecommendation,#coachFullscreen #fsStatus,#coachFullscreen #fsRemaining{display:none!important}
+#coachFullscreen .controls{padding:3px 0!important;gap:6px;background:transparent}
+#coachFullscreen .controls button{min-height:45px;font-size:13px}
+#coachFullscreen #fsReturn{min-height:30px!important;font-size:11px;padding:4px}
 #coachFullscreen [hidden]{display:none!important}
 @media(max-height:700px){#coachFullscreen #fsAvatar video,#coachFullscreen #fsAvatar model-viewer{max-height:19dvh!important}#coachFullscreen #fsRemaining,#coachFullscreen #fsRestRecommendation{font-size:12px!important}}
 `;document.head.append(style);
@@ -107,7 +126,7 @@ function syncFullscreen(){
  layer.dataset.phase=phase;
  document.getElementById('fsPhase').textContent=ended?'FINALIZADO':phase==='rest'?'DESCANSO':blockParts?(getSeries()[current]?.name.startsWith('Calentamiento')?'CALENTAMIENTO':'VUELTA A LA CALMA'):'ENTRENAMIENTO';showElapsed();
  document.getElementById('fsProgress').textContent=get('coachProgress');
- document.getElementById('fsExercise').textContent=phase==='rest'?'Tiempo de recuperación · Después: '+get('coachExercise'):get('coachExercise');showCoachAvatar(blockParts?blockParts[blockIndex]?.[0]:get('coachExercise'));
+ document.getElementById('fsExercise').textContent=phase==='rest'?'Después: '+get('coachExercise'):get('coachExercise');showCoachAvatar(blockParts?blockParts[blockIndex]?.[0]:get('coachExercise'));
  document.getElementById('fsTimer').textContent=ended?'¡Buen trabajo!':get('coachTimer').replace(/^(Trabajo|Descanso) /,'');
  document.getElementById('fsTimer').style.fontSize=(!ended&&phase==='work'&&(get('coachTimer')==='Conteo por repeticiones'||get('coachTimer').includes(' rep')))?'clamp(28px,7vw,46px)':'';
  document.getElementById('fsReps').textContent=get('coachReps');document.getElementById('fsRestRecommendation').textContent=phase==='rest'?'Descanso recomendado: '+(seriesRestLabel())+' · podés omitirlo': 'Descanso recomendado: 30 s entre series · 60 s entre ejercicios';
