@@ -23,7 +23,7 @@ function showGuidedTechnique(){const name=getSeries()[current]?.name;if(!blockPa
 let blockParts=null,blockIndex=0,wakeLock=null,totalClock=null;
 const durationWords=n=>n>=70?(n%60===0?Math.floor(n/60)+' minutos':Math.floor(n/60)+' minutos y '+n%60+' segundos'):n+' segundos';
 function elapsedText(){const n=Math.max(0,Math.floor((Date.now()-startedAt)/1000));return [Math.floor(n/3600),Math.floor(n%3600/60),n%60].map(x=>String(x).padStart(2,'0')).join(':')}
-function showElapsed(){const el=document.getElementById('fsElapsed');if(el&&startedAt)el.textContent='Tiempo total · '+elapsedText()}
+function showElapsed(){const el=document.getElementById('fsElapsed');if(el&&startedAt)el.textContent='Total '+elapsedText()}
 async function wake(){try{if('wakeLock'in navigator&&!wakeLock)wakeLock=await navigator.wakeLock.request('screen')}catch{}}
 async function unwake(){try{await wakeLock?.release()}catch{}wakeLock=null}
 function startBlock(){const step=getSeries()[current];blockParts=guidedBlocks[step?.name]?buildGuidedBlock(step.name):null;blockIndex=0;if(!blockParts)return false;runPart();return true}
@@ -74,7 +74,7 @@ function fullscreen(){
 #coachFullscreen .phase{font-size:14px;letter-spacing:2px}
 #coachFullscreen #fsTechnique,#coachFullscreen #fsStartReps{min-height:38px!important;padding:7px 12px}
 #coachFullscreen>div:nth-child(2){overflow:hidden!important;gap:2px!important;padding:0!important}
-#coachFullscreen #fsElapsed,#coachFullscreen #fsProgressDetail,#coachFullscreen #fsRemaining,#coachFullscreen #fsStatus,#coachFullscreen #fsRestRecommendation{display:none!important}
+#coachFullscreen #fsProgressDetail,#coachFullscreen #fsRemaining,#coachFullscreen #fsStatus,#coachFullscreen #fsRestRecommendation{display:none!important}
 #coachFullscreen #fsProgress{font-size:13px!important;line-height:1.1}
 #coachFullscreen #fsExercise{font-size:clamp(17px,4.3vw,22px)!important;line-height:1.12}
 #coachFullscreen #fsAvatar video{max-height:min(21dvh,150px)!important}
@@ -100,9 +100,12 @@ function fullscreen(){
 #coachFullscreen #fsStartReps{order:6;min-height:34px!important;font-size:12px;padding:5px 9px}
 #coachFullscreen #fsReps{order:7;font-size:12px!important}
 #coachFullscreen #fsTechnique{order:8;min-height:32px!important;font-size:12px;padding:5px 9px}
-#coachFullscreen #fsElapsed,#coachFullscreen #fsProgressDetail,#coachFullscreen #fsRestRecommendation,#coachFullscreen #fsStatus,#coachFullscreen #fsRemaining{display:none!important}
+#coachFullscreen #fsProgressDetail,#coachFullscreen #fsRestRecommendation,#coachFullscreen #fsStatus,#coachFullscreen #fsRemaining{display:none!important}
 #coachFullscreen .controls{padding:3px 0!important;gap:6px;background:transparent}
 #coachFullscreen .controls button{min-height:45px;font-size:13px}
+#coachFullscreen #fsElapsed{display:block!important;position:absolute;top:8px;left:50%;transform:translateX(-50%);font-size:12px!important;white-space:nowrap;line-height:1.2;color:#b7f56b!important;z-index:1}
+#coachFullscreen>div:first-child{position:relative}
+#coachFullscreen>div:first-child b{font-size:12px!important}
 #coachFullscreen #fsReturn{min-height:48px!important;font-size:14px!important;font-weight:600;padding:10px 12px!important;margin-top:4px!important;flex-shrink:0;width:100%}
 #coachFullscreen [hidden]{display:none!important}
 @media(max-height:700px){#coachFullscreen #fsAvatar video,#coachFullscreen #fsAvatar model-viewer{max-height:19dvh!important}#coachFullscreen #fsRemaining,#coachFullscreen #fsRestRecommendation{font-size:12px!important}}
